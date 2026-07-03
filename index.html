@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sistema de Reportes - Login</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins', sans-serif;
+}
+
+body{
+    min-height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    background: linear-gradient(135deg, #0b3d2e, #146c43, #1fa34a);
+    padding:20px;
+}
+
+.login-container{
+    width:100%;
+    max-width:420px;
+    background: rgba(255,255,255,0.12);
+    backdrop-filter: blur(18px);
+    border: 1px solid rgba(255,255,255,0.2);
+    border-radius: 20px;
+    padding: 35px;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.35);
+    text-align:center;
+}
+
+.logo{
+    width:120px;
+    margin-bottom:15px;
+}
+
+.titulo{
+    color:white;
+    font-size:22px;
+    font-weight:700;
+}
+
+.subtitulo{
+    color:rgba(255,255,255,0.8);
+    font-size:13px;
+    margin-bottom:20px;
+}
+
+label{
+    display:block;
+    text-align:left;
+    color:white;
+    font-size:13px;
+    margin-top:10px;
+}
+
+input{
+    width:100%;
+    padding:12px;
+    margin-top:5px;
+    border:none;
+    border-radius:8px;
+    outline:none;
+}
+
+button{
+    width:100%;
+    padding:12px;
+    margin-top:20px;
+    background:#0f5e2e;
+    color:white;
+    border:none;
+    border-radius:8px;
+    cursor:pointer;
+    font-weight:bold;
+}
+
+button:hover{
+    background:#0a3d1e;
+}
+
+.footer{
+    margin-top:15px;
+    font-size:11px;
+    color:rgba(255,255,255,0.7);
+}
+</style>
+</head>
+
+<body>
+
+<div class="login-container">
+
+    <img src="CECY.jpg" class="logo">
+
+    <div class="titulo">SISTEMA DE REPORTES</div>
+    <div class="subtitulo">CECYTEM - Tenango del Valle</div>
+
+    <!-- 🔥 ESTE ES EL IMPORTANTE -->
+    <form method="POST" action="login.php">
+
+        <label>Usuario</label>
+        <input type="text" name="usuario" required>
+
+        <label>Contraseña</label>
+        <input type="password" name="password" required>
+
+        <button type="submit">INICIAR SESIÓN</button>
+
+    </form>
+
+    <div class="footer">
+        Acceso restringido a personal autorizado
+    </div>
+
+</div>
+
+</body>
+</html>

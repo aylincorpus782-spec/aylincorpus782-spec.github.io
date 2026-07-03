@@ -1,0 +1,195 @@
+<?php
+session_start();
+
+if(!isset($_SESSION['usuario'])){
+    header("Location: index.php");
+    exit();
+}
+?>
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Sistema de Reportes</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
+}
+
+body{
+    min-height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    padding:20px;
+
+    background:
+    linear-gradient(135deg,#003d1f,#006633,#0f9d58);
+}
+
+.container{
+    width:100%;
+    max-width:1100px;
+    text-align:center;
+}
+
+.logo{
+    width:120px;
+    margin-bottom:15px;
+}
+
+h1{
+    color:white;
+    font-size:42px;
+    font-weight:700;
+}
+
+.subtitulo{
+    color:rgba(255,255,255,.9);
+    margin-top:10px;
+    margin-bottom:50px;
+    font-size:16px;
+}
+
+.roles{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+    gap:25px;
+}
+
+.card{
+    background:rgba(255,255,255,.12);
+    backdrop-filter:blur(15px);
+    border:1px solid rgba(255,255,255,.2);
+    border-radius:25px;
+    padding:35px 25px;
+    cursor:pointer;
+    transition:.35s;
+    color:white;
+    box-shadow:0 10px 30px rgba(0,0,0,.25);
+}
+
+.card:hover{
+    transform:translateY(-10px) scale(1.03);
+    box-shadow:0 20px 40px rgba(0,0,0,.35);
+}
+
+.icono{
+    font-size:70px;
+    margin-bottom:15px;
+}
+
+.card h2{
+    margin-bottom:10px;
+    font-size:24px;
+}
+
+.card p{
+    font-size:14px;
+    opacity:.9;
+    line-height:1.5;
+}
+
+.directivo:hover{
+    border-color:#4dabff;
+}
+
+.orientador:hover{
+    border-color:#69db7c;
+}
+
+.padre:hover{
+    border-color:#ffa94d;
+}
+
+.footer{
+    margin-top:40px;
+    color:white;
+    opacity:.8;
+    font-size:13px;
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <!-- Logo -->
+    <img src="CECY.jpg" alt="Logo" class="logo">
+
+    <h1>Sistema de Reportes</h1>
+
+    <div class="subtitulo">
+        Seleccione el perfil con el que desea ingresar
+    </div>
+
+    <div class="roles">
+
+        <!-- DIRECTIVO -->
+        <div class="card directivo" onclick="irDirectivo()">
+            <div class="icono">👔</div>
+            <h2>Directivos</h2>
+            <p>
+                Consulta estadísticas, reportes generales,
+                incidencias y seguimiento institucional.
+            </p>
+        </div>
+
+        <!-- ORIENTADOR -->
+        <div class="card orientador" onclick="irOrientador()">
+            <div class="icono">🧑‍🏫</div>
+            <h2>Orientadores</h2>
+            <p>
+                Registra incidencias, seguimiento académico
+                y atención a estudiantes.
+            </p>
+        </div>
+
+        <!-- PADRES -->
+        <div class="card padre" onclick="irPadre()">
+            <div class="icono">👨‍👩‍👧</div>
+            <h2>Padres de Familia</h2>
+            <p>
+                Consulta reportes, observaciones y avances
+                de tus hijos en tiempo real.
+            </p>
+        </div>
+
+    </div>
+
+    <div class="footer">
+        © 2026 Sistema Institucional de Reportes
+    </div>
+
+</div>
+
+<script>
+
+function irDirectivo(){
+    window.location.href = "direct.php";
+}
+
+function irOrientador(){
+    window.location.href = "orientador.php";
+}
+
+function irPadre(){
+    window.location.href = "padre.php";
+}
+
+</script>
+
+</body>
+</html>

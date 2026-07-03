@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Panel Directivo</title>
+
+<style>
+
+body{
+    font-family:Poppins;
+    margin:0;
+    background:#0b3d1e;
+}
+
+.header{
+    background:#062814;
+    color:white;
+    padding:20px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+
+.volver{
+    background:#d62828;
+    color:white;
+    border:none;
+    padding:10px 15px;
+    border-radius:8px;
+    cursor:pointer;
+}
+
+/* CONTENEDOR */
+.container{
+    padding:20px;
+    color:white;
+}
+
+/* CARDS */
+.cards{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+    gap:15px;
+    margin-bottom:20px;
+}
+
+.card{
+    background:white;
+    color:black;
+    padding:20px;
+    border-radius:12px;
+    text-align:center;
+    box-shadow:0 5px 15px rgba(0,0,0,.2);
+}
+
+.numero{
+    font-size:40px;
+    font-weight:bold;
+    color:#0b3d1e;
+}
+
+/* TABLA */
+table{
+    width:100%;
+    border-collapse:collapse;
+    background:white;
+    color:black;
+    margin-top:15px;
+}
+
+th,td{
+    padding:10px;
+    border:1px solid #ddd;
+    text-align:center;
+}
+
+th{
+    background:#0b3d1e;
+    color:white;
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="header">
+    <h2>👔 Panel Directivo</h2>
+
+    <button class="volver" onclick="window.location.href='principal.php'">
+        Volver al menú
+    </button>
+</div>
+
+<div class="container">
+
+<h3>📊 Resumen general del sistema</h3>
+
+<div class="cards">
+
+    <div class="card">
+        <h3>Total de reportes</h3>
+        <div class="numero" id="totalReportes">0</div>
+    </div>
+
+    <div class="card">
+        <h3>Alumnos registrados</h3>
+        <div class="numero" id="totalAlumnos">0</div>
+    </div>
+
+    <div class="card">
+        <h3>Casos pendientes</h3>
+        <div class="numero" id="pendientes">0</div>
+    </div>
+
+</div>
+
+<h3>📋 Últimos reportes</h3>
+
+<table>
+    <thead>
+        <tr>
+            <th>Alumno</th>
+            <th>Grupo</th>
+            <th>Motivo</th>
+            <th>Estado</th>
+        </tr>
+    </thead>
+
+    <tbody id="tabla"></tbody>
+</table>
+
+</div>
+
+<script>
+
+function cargarDatos(){
+
+    let casos = JSON.parse(localStorage.getItem("casos")) || [];
+
+    // TOTAL REPORTES
+    document.getElementById("totalReportes").innerText = casos.length;
+
+    // ALUMNOS ÚNICOS
+    let alumnosUnicos = new Set(casos.map(c => c.alumno));
+    document.getElementById("totalAlumnos").innerText = alumnosUnicos.size;
+
+    // PENDIENTES
+    let pendientes = casos.filter(c => c.estado === "Pendiente").length;
+    document.getElementById("pendientes").innerText = pendientes;
+
+    // ÚLTIMOS REPORTES
+    let tabla = document.getElementById("tabla");
+    tabla.innerHTML = "";
+
+    casos.slice(-5).forEach(c => {
+
+        tabla.innerHTML += `
+        <tr>
+            <td>${c.alumno}</td>
+            <td>${c.grupo}</td>
+            <td>${c.motivo}</td>
+            <td>${c.estado}</td>
+        </tr>
+        `;
+
+    });
+
+}
+
+window.onload = cargarDatos;
+
+</script>
+
+</body>
+</html>
