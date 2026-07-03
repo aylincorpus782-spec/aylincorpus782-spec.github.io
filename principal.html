@@ -1,11 +1,3 @@
-<?php
-session_start();
-
-if(!isset($_SESSION['usuario'])){
-    header("Location: index.php");
-    exit();
-}
-?>
 
 <!DOCTYPE html>
 <html lang="es">
@@ -178,15 +170,15 @@ h1{
 <script>
 
 function irDirectivo(){
-    window.location.href = "direct.php";
+    window.location.href = "direct.html";
 }
 
 function irOrientador(){
-    window.location.href = "orientador.php";
+    window.location.href = "orientador.html";
 }
 
 function irPadre(){
-    window.location.href = "padre.php";
+    window.location.href = "padre.html";
 }
 
 </script>
